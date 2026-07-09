@@ -1,0 +1,180 @@
+:root {
+  --text: #222;
+  --muted: #666;
+  --line: #d7d7d7;
+  --link: #1f5f8b;
+  --bg: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1040px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 14px 0;
+}
+
+.site-title {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.site-title:hover {
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  font-size: 14px;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 40px;
+  width: min(1040px, calc(100% - 32px));
+  margin: 34px auto 0;
+}
+
+.sidebar {
+  align-self: start;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.name-note {
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+
+.sidebar p {
+  margin: 0 0 14px;
+}
+
+.profile-links {
+  margin: 24px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.profile-links dt {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.profile-links dd {
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+}
+
+section {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-child {
+  border-bottom: 0;
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.publication-list {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.publication-list li {
+  margin-bottom: 18px;
+  padding-left: 4px;
+}
+
+.paper-tag {
+  color: var(--text);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.me {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-footer {
+  width: min(1040px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 0 0 36px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+
+  .page {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 24px;
+  }
+}
