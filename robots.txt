@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://changhaoqiu.github.io/sitemap.xml
