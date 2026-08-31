@@ -1,0 +1,70 @@
+name: Submit homepage to IndexNow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - "styles.css"
+      - "robots.txt"
+      - "sitemap.xml"
+      - "63858c579084469ba69c9c6b988cae61.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-submission
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    env:
+      INDEXNOW_KEY: 63858c579084469ba69c9c6b988cae61
+      KEY_URL: https://changhaoqiu.github.io/63858c579084469ba69c9c6b988cae61.txt
+      PAGE_URL: https://changhaoqiu.github.io/
+    steps:
+      - name: Wait for GitHub Pages
+        shell: bash
+        run: |
+          sleep 90
+
+          for attempt in {1..20}; do
+            published_key="$(curl --silent --show-error --fail --max-time 10 "${KEY_URL}?check=${attempt}" || true)"
+            if [ "${published_key}" = "${INDEXNOW_KEY}" ]; then
+              echo "IndexNow key is available on GitHub Pages."
+              exit 0
+            fi
+
+            sleep 15
+          done
+
+          echo "IndexNow key was not published within the expected time."
+          exit 1
+
+      - name: Submit homepage
+        shell: bash
+        run: |
+          response_file="$(mktemp)"
+          status="$(curl --silent --show-error \
+            --output "${response_file}" \
+            --write-out "%{http_code}" \
+            --request POST \
+            --header "Content-Type: application/json; charset=utf-8" \
+            --data "{\"host\":\"changhaoqiu.github.io\",\"key\":\"${INDEXNOW_KEY}\",\"keyLocation\":\"${KEY_URL}\",\"urlList\":[\"${PAGE_URL}\"]}" \
+            "https://api.indexnow.org/indexnow")"
+
+          cat "${response_file}"
+          echo "IndexNow returned HTTP ${status}."
+
+          case "${status}" in
+            200|202)
+              echo "Homepage submission accepted."
+              ;;
+            *)
+              exit 1
+              ;;
+          esac
