@@ -127,6 +127,36 @@ ul {
   padding-left: 20px;
 }
 
+.education-list {
+  display: grid;
+  gap: 22px;
+}
+
+.education-item {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.education-period {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.education-item h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.education-item p {
+  margin: 4px 0 0;
+}
+
+.education-advisors {
+  color: var(--muted);
+}
+
 .publication-list {
   margin: 0;
   padding-left: 22px;
@@ -171,5 +201,10 @@ ul {
     grid-template-columns: 1fr;
     gap: 28px;
     margin-top: 24px;
+  }
+
+  .education-item {
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
 }
