@@ -127,6 +127,22 @@ ul {
   padding-left: 20px;
 }
 
+.news-list {
+  padding: 0;
+  list-style: none;
+}
+
+.news-list li {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.news-list time {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
 .education-list {
   display: grid;
   gap: 22px;
@@ -203,6 +219,7 @@ ul {
     margin-top: 24px;
   }
 
+  .news-list li,
   .education-item {
     grid-template-columns: 1fr;
     gap: 2px;
