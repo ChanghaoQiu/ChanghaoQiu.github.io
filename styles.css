@@ -128,6 +128,8 @@ ul {
 }
 
 .news-list {
+  display: grid;
+  gap: 14px;
   padding: 0;
   list-style: none;
 }
