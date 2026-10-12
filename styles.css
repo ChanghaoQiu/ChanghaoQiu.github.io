@@ -175,6 +175,16 @@ ul {
   color: var(--muted);
 }
 
+.publication-heading {
+  margin: 0 0 14px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.publication-list + .publication-heading {
+  margin-top: 28px;
+}
+
 .publication-list {
   margin: 0;
   padding-left: 22px;
